@@ -8,6 +8,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 
@@ -22,15 +23,13 @@ public class Question {
     private Long questionid;
     private String question;
 
-    @ManyToMany
+    @ManyToOne
     @JsonIgnoreProperties("questions")
     @JoinColumn(name = "queryid") //FK
     private Query query;
 
     // Constructors
     public Question() {
-        this.questionid = null;
-        this.question = null;
     }
     
     public Question(String question) {
@@ -38,27 +37,39 @@ public class Question {
     }
 
     // Getters
-    public Long getQuestionid() {
-        return questionid;
-    }
+        public Long getQuestionid() {
+            return questionid;
+        }
 
-    public String getQuestion() {
-        return question;
-    }
+        public String getQuestion() {
+            return question;
+        }
+
+        public Query getQuery() {
+            return query;
+        }
 
     // Setters
-    public void setQuestionid(Long questionid) {
-        this.questionid = questionid;
-    }
-    public void setQuestion(String question) {
-        this.question = question;
-    }
+        public void setQuestionid(Long questionid) {
+            this.questionid = questionid;
+        }
+        public void setQuestion(String question) {
+            this.question = question;
+        }
+        public void setQuery(Query query) {
+            this.query = query;
+        }
+        
     // toString
     
     @Override
     public String toString() {
         return "Question [questionid=" + questionid + ", question=" + question + "]";
     }
+
+
+
+
 
     
     

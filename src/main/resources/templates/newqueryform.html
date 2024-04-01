@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlsn:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,14 @@
 </head>
 <body>
     <h1>Add New Query</h1>
+
+    <form acttion="#" th:action="@{/savequery}" th:object="${query}" method="post">
+        <p><input type="hidden" th:field="*{queryid}" /></p>
+        <p><input type="text" placeholder="Name" th:field="*{name}" /></p>
+        <p><input type="text" placeholder="Description" th:field="*{desc}" /></p>
+
+        <p><input type="submit" placeholder="Name" value="save" /></p>
+    </form>
 
     <a href="/save">save</a>
     <a href="/query">Back</a>
