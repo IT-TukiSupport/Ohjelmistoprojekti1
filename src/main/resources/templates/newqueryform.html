@@ -12,7 +12,8 @@
         <p><input type="hidden" th:field="*{queryid}" /></p>
         <p><input type="text" placeholder="Name" th:field="*{name}" /></p>
         <p><input type="text" placeholder="Description" th:field="*{desc}" /></p>
-        <p><input type="text" placeholder="Question" th:field="*{questions[0].text}" /></p>
+        
+        <p><input type="text" placeholder="New Question" th:field="*{questions[0].question}" /></p>
         
 
         <p><input type="submit" placeholder="Name" value="save" /></p>
