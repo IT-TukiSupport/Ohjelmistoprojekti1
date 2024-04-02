@@ -1,14 +1,22 @@
 package hh.sof5.ohjelmistoprojekti1.web;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import hh.sof5.ohjelmistoprojekti1.domain.Query;
 import hh.sof5.ohjelmistoprojekti1.domain.QueryRepository;
+import hh.sof5.ohjelmistoprojekti1.domain.Question;
+import hh.sof5.ohjelmistoprojekti1.domain.QuestionRepository;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -16,6 +24,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class QueryController {
+
+    @Autowired
+    private QuestionRepository questionRepository;
 
     @Autowired
     private QueryRepository queryRepository;
@@ -32,6 +43,8 @@ public class QueryController {
     public String addNewQuery(Model model) {
 
         model.addAttribute("query", new Query());
+        List<Question> questions = new ArrayList<>();
+        model.addAttribute("questions", questions);
 
         return "newqueryform"; //newQueryForm.html
     }
@@ -43,6 +56,14 @@ public class QueryController {
 
         return "redirect:/queries";
     }
+
+    @GetMapping(value = "/editquery/{queryid}")
+        public String editQuery(@PathVariable("queryid") Long queryid, Model model){
+            Query query = queryRepository.findByqueryid(queryid);
+            List <Question> questions = query.getQuestions();
+            model.addAttribute("questions", questions);
+            return "/editquery";
+        }
     
     
 }

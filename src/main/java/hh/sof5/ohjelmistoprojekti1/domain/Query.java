@@ -41,6 +41,10 @@ public class Query {
 
         }
 
+        public void addQuestion(Question question) {
+            questions.add(question);
+        }
+
     // Setters
 
         public void setQueryid(Long queryid) {
