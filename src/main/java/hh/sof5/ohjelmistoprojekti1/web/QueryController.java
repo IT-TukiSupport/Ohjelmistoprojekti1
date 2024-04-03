@@ -62,25 +62,24 @@ public class QueryController {
     @GetMapping(value = "/addquestiontoquery/{queryid}")
     public String addQuestion(@PathVariable("queryid") Long queryid, Model model) {
 
-        Query query = queryRepository.findByqueryid(queryid);
-        Question newQuestion = new Question();
-        newQuestion.setQuery(query);
+        Long id = queryid;
 
+        model.addAttribute("queryid", id);
         model.addAttribute("newquestion", new Question()); 
         
         return "questionform";
     }
 
     @PostMapping(value = "/savequestion")
-    public String saveQuestionToQuery(@ModelAttribute Question newQuestion) {
-        
+    public String saveQuestionToQuery(@ModelAttribute Question newQuestion, Long queryid) {
+
+        Query query = queryRepository.findById(queryid).orElse(null);
+        newQuestion.setQuery(query);
         questionRepository.save(newQuestion);
 
         return "redirect:/queries";
     }
     
-
-
     @GetMapping(value = "/editquery/{queryid}")
         public String editQuery(@PathVariable("queryid") Long queryid, Model model){
             Query query = queryRepository.findByqueryid(queryid);

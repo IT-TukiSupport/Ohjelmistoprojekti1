@@ -10,6 +10,7 @@
 
     <form action="#" th:action="@{/savequestion}" th:object="${newquestion}" method="post">
         <p><input type="text" th:field="*{Question}" /></p>
+        <input type="hidden" name="queryid" th:value="${queryid}" />
         <p><input type="submit" value="save" /></p>
     </form>
 
