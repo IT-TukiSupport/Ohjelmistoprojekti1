@@ -59,8 +59,12 @@ public class QueryController {
         return "redirect:/queries";
     }
 
-    @GetMapping(value = "/addquestion")
-    public String addQuestion(Model model) {
+    @GetMapping(value = "/addquestiontoquery/{queryid}")
+    public String addQuestion(@PathVariable("queryid") Long queryid, Model model) {
+
+        Query query = queryRepository.findByqueryid(queryid);
+        Question newQuestion = new Question();
+        newQuestion.setQuery(query);
 
         model.addAttribute("newquestion", new Question()); 
         
@@ -69,8 +73,7 @@ public class QueryController {
 
     @PostMapping(value = "/savequestion")
     public String saveQuestionToQuery(@ModelAttribute Question newQuestion) {
-
-        newQuestion.setQuery(queryRepository.findByName("query1"));
+        
         questionRepository.save(newQuestion);
 
         return "redirect:/queries";
