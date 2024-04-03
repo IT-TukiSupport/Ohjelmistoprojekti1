@@ -28,21 +28,16 @@ public class Query {
 
     //Constructor
 
-        public Query(String name, String desc, List<Question> questions) {
+        public Query(String name, String desc) {
             super();
             this.name = name;
             this.desc = desc;
-            this.questions = questions;
         }
 
     //Null Constructor
 
         public Query(){
 
-        }
-
-        public void addQuestion(Question question) {
-            questions.add(question);
         }
 
     // Setters

@@ -34,8 +34,7 @@ public class Ohjelmistoprojekti1Application {
 
 			Query query1 = new Query(
 				"query1",
-				"First query",
-				null
+				"First query"
 			);
 
 			log.info("lets save couple test questions");

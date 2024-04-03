@@ -2,6 +2,7 @@ package hh.sof5.ohjelmistoprojekti1.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,13 +15,12 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Question")
-
 public class Question {
 
     // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long questionid;
+    private Long id;
     private String question;
 
     @ManyToOne
@@ -29,16 +29,19 @@ public class Question {
     private Query query;
 
     // Constructors
-    public Question() {
-    }
+
     
     public Question(String question) {
         this.question = question;
     }
 
+    public Question() {
+
+    }
+
     // Getters
-        public Long getQuestionid() {
-            return questionid;
+        public Long getId() {
+            return id;
         }
 
         public String getQuestion() {
@@ -50,12 +53,15 @@ public class Question {
         }
 
     // Setters
-        public void setQuestionid(Long questionid) {
-            this.questionid = questionid;
+
+        public void setId(Long id) {
+            this.id = id;
         }
+
         public void setQuestion(String question) {
             this.question = question;
         }
+
         public void setQuery(Query query) {
             this.query = query;
         }
@@ -64,15 +70,8 @@ public class Question {
     
     @Override
     public String toString() {
-        return "Question [questionid=" + questionid + ", question=" + question + "]";
+        return "Question [questionid=" + id + ", question=" + question + "]";
     }
 
 
-
-
-
-    
-    
-
-    
 }
