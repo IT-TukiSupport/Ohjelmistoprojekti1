@@ -9,7 +9,7 @@
     <h1>Add New Query</h1>
 
     <form action="#" th:action="@{/savequestion}" th:object="${newquestion}" method="post">
-        <p><input type="text" th:field="${newquestion.question}" /></p>
+        <p><input type="text" th:field="*{Question}" /></p>
         <p><input type="submit" value="save" /></p>
     </form>
 
