@@ -87,8 +87,7 @@ public class QueryController {
             model.addAttribute("questions", questions);
             return "/editquery";
         }
-    
-    
+
 }
     
 
