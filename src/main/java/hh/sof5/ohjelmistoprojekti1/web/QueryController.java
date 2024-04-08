@@ -36,7 +36,7 @@ public class QueryController {
 
             model.addAttribute("queries", queryRepository.findAll());
 
-            return "querylist"; //query.html
+            return "querylist"; //querylist.html
         }
 
     @GetMapping(value = "/addquery")

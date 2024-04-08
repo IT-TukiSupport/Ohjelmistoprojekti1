@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Querys</title>
+    <title>All Queries</title>
 </head>
 <body>
-    <h1>Querys</h1>
+    <h1>Queries</h1>
 
     <table>
         <tr>
             <th>Name</th>
-            <th>Description</th>
         </tr>
 
         <tr th:each="query : ${queries}">
             <td th:text="${query.name}"></td>
-            <td th:text="${query.desc}"></td>
-            <td><button><a th:href="@{/addquestiontoquery/{queryid}(queryid=${query.queryid})}">Add Question</a></button></td>
+            <td><button><a th:href="@{/showquery/{queryid}(queryid=${query.queryid})}">Show Query</a></button></td>
         </tr>
     </table>
 
