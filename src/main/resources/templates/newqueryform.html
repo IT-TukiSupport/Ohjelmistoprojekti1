@@ -9,8 +9,8 @@
     <h1>Add New Query</h1>
 
     <form action="#" th:action="@{/savequery}" th:object="${query}" method="post">
-        <p><input type="text" placeholder="Name" th:field="*{name}" /></p>
-        <p><input type="text" placeholder="Description" th:field="*{desc}" /></p>
+        <p><input type="text" placeholder="Name" size="50" th:field="*{name}" /></p>
+        <p><textarea id="text" placeholder="Description" rows="10" cols="100" th:field="*{desc}" ></textarea></p>
 
         <p><input type="submit" value="Save" /></p>
     </form>
