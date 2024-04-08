@@ -11,16 +11,26 @@
     <table>
         <tr>
             <th>Name</th>
-            <th>Description</th>
         </tr>
-
         <tr th:each="query : ${queries}">
             <td th:text="${query.name}"></td>
-            <td th:text="${query.desc}"></td>
-            <td><button><a th:href="@{/addquestiontoquery/{queryid}(queryid=${query.queryid})}">Add Question</a></button></td>
+        </tr>
+
+        <tr>
+            <th>Description</th>
+        </tr>
+            <tr th:each="query : ${queries}">
+                <td th:text="${query.desc}"></td>
+        </tr>
+
+        <tr>
+            <th>Questions</th>
+        </tr>
+        
+        <tr th:each="question : ${questions}">
+            <td th:text="${question.question}"></td>
         </tr>
     </table>
 
-    <a href="/addquery">Add New Query</a>
 </body>
 </html>

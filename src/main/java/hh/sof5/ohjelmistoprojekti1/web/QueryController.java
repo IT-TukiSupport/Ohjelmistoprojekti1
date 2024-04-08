@@ -36,7 +36,7 @@ public class QueryController {
 
             model.addAttribute("queries", queryRepository.findAll());
 
-            return "query"; //query.html
+            return "querylist"; //query.html
         }
 
     @GetMapping(value = "/addquery")
@@ -86,6 +86,18 @@ public class QueryController {
             List <Question> questions = query.getQuestions();
             model.addAttribute("questions", questions);
             return "/editquery";
+        }
+
+    @GetMapping(value ="/showquery/{queryid}")
+        public String showQuery(@PathVariable("queryid") Long queryid, Model model){
+            Query query = queryRepository.findByqueryid(queryid);
+            List <Question> questions = query.getQuestions();
+            
+            model.addAttribute("queries", queryRepository.findByqueryid(queryid));
+            model.addAttribute("questions", questions);
+            
+            return "query";
+
         }
 
 }
