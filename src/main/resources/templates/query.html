@@ -31,6 +31,10 @@
             <td th:text="${question.question}"></td>
         </tr>
     </table>
+    
+    <td><button><a th:href="@{/addquestiontoquery/{queryid}(queryid=${queryid})}">Add Question</a></button></td>
+
+
 
 </body>
 </html>

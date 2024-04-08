@@ -77,7 +77,7 @@ public class QueryController {
         newQuestion.setQuery(query);
         questionRepository.save(newQuestion);
 
-        return "redirect:/queries";
+        return "redirect:/showquery/" + queryid;
     }
     
     @GetMapping(value = "/editquery/{queryid}")
@@ -92,7 +92,9 @@ public class QueryController {
         public String showQuery(@PathVariable("queryid") Long queryid, Model model){
             Query query = queryRepository.findByqueryid(queryid);
             List <Question> questions = query.getQuestions();
-            
+
+
+            model.addAttribute("queryid", queryid);
             model.addAttribute("queries", queryRepository.findByqueryid(queryid));
             model.addAttribute("questions", questions);
             
