@@ -33,26 +33,32 @@ public class Ohjelmistoprojekti1Application {
 			log.info("Lets Save couple test querys");
 
 			Query query1 = new Query(
-				"query1",
-				"First query"
+				"Haaga-Helia tyytyväisyyskysely",
+				"Tällä kyselyllä selvitetään opiskelijoiden mielipiteitä Haaga-Helian ammattikorkeakoulusta."
 			);
 
 			log.info("lets save couple test questions");
 
 			Question question1 = new Question(
-				"Firstname?"
+				"Minä vuonna olet aloittanut opiskelusi?"
 			);
 
 			Question question2 = new Question(
-				"Lastname?"
+				"Oletko tykännyt opiskella Haaga-Heliassa?"
+			);
+
+			Question question3 = new Question(
+				"Suosittelisitko Haaga-Heliaa kavereillesi?"
 			);
 
 			question1.setQuery(query1);
 			question2.setQuery(query1);
+			question3.setQuery(query1);
 
 			List<Question> questions = new ArrayList<>();
 			questions.add(question1);
 			questions.add(question2);
+			questions.add(question3);
 
 
 			query1.setQuestions(questions);
