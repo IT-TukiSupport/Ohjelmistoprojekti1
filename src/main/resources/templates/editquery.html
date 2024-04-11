@@ -10,7 +10,7 @@
     <table>
         <form method="post" action="#" th:action = "@{/editquery}" th:object = ${queryid}>
             <tr th:each = "question : ${questions}">
-                <td th:text = "${question.question}"></td>
+                <td th:text = "${question.questionText}"></td>
             </tr>
             
 
