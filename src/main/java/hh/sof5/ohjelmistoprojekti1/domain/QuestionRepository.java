@@ -1,6 +1,5 @@
 package hh.sof5.ohjelmistoprojekti1.domain;
 
-import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
