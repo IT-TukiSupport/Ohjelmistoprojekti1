@@ -30,8 +30,7 @@ public class AnswerRestController {
     }
 
     @PostMapping(value = "/saveanswer")
-    public @ResponseBody Answer saveAnswer(@RequestBody Answer answer) {
-        return answerRepository.save(answer);
+    public @ResponseBody List<Answer> saveAnswer(@RequestBody List<Answer> answers) {
+        return (List<Answer>) answerRepository.saveAll(answers);
     }
-
 }
