@@ -26,9 +26,12 @@ public class Answer {
     private Question question;
 
     // Construstors
-    public Answer(String answerText) {
+    
+    public Answer(String answerText, Question question) {
         this.answerText = answerText;
+        this.question = question;
     }
+
 
     public Answer() {
 

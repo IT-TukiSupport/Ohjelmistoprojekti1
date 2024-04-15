@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Question {
     // Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long questionid;
     private String questionText;
 
     @ManyToOne
@@ -31,7 +32,7 @@ public class Question {
     @JoinColumn(name = "queryid") //FK
     private Query query;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
     @JsonIgnoreProperties("question")
     private List<Answer> answers;
 
@@ -47,8 +48,8 @@ public class Question {
     }
 
     // Getters
-        public Long getId() {
-            return id;
+        public Long getQuestionid() {
+            return questionid;
         }
 
         public String getQuestionText() {
@@ -61,8 +62,8 @@ public class Question {
 
     // Setters
 
-        public void setId(Long id) {
-            this.id = id;
+        public void setQuestionid(Long questionid) {
+            this.questionid = questionid;
         }
 
         public void setQuestionText(String questionText) {
@@ -77,7 +78,7 @@ public class Question {
     
     @Override
     public String toString() {
-        return "Question [questionid=" + id + ", questionText=" + questionText + "]";
+        return "Question [questionid=" + questionid + ", questionText=" + questionText + "]";
     }
 
 
