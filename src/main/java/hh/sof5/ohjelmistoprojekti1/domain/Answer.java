@@ -25,7 +25,6 @@ public class Answer {
     @JoinColumn(name = "questionid") //FK
     private Question question;
 
-
     // Construstors
     public Answer(String answerText) {
         this.answerText = answerText;
@@ -34,7 +33,6 @@ public class Answer {
     public Answer() {
 
     }
-
     
     // Getters
     public Long getAnswerid() {
@@ -45,6 +43,9 @@ public class Answer {
         return answerText;
     }
 
+    public Question getQuestion() {
+        return question;
+    }
 
     // Setters
     public void setAnswerid(Long answerid) {
@@ -55,13 +56,14 @@ public class Answer {
         this.answerText = answerText;
     }
 
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
 
     // toString
     @Override
     public String toString() {
         return "Answer [answerid=" + answerid + ", answerText=" + answerText + "]";
-    }
-    
-    
+    }    
 
 }
