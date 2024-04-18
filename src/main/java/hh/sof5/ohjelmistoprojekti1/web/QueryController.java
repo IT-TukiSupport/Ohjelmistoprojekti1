@@ -1,7 +1,6 @@
 package hh.sof5.ohjelmistoprojekti1.web;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +13,6 @@ import hh.sof5.ohjelmistoprojekti1.domain.QueryRepository;
 import hh.sof5.ohjelmistoprojekti1.domain.Question;
 
 import org.springframework.web.bind.annotation.PostMapping;
-
-
 
 @Controller
 public class QueryController {
@@ -57,7 +54,6 @@ public class QueryController {
         public String showQuery(@PathVariable("queryid") Long queryid, Model model){
             Query query = queryRepository.findByqueryid(queryid);
             List <Question> questions = query.getQuestions();
-
 
             model.addAttribute("queryid", queryid);
             model.addAttribute("queries", queryRepository.findByqueryid(queryid));

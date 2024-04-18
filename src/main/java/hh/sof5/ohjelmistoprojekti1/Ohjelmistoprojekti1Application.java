@@ -50,14 +50,25 @@ public class Ohjelmistoprojekti1Application {
 				"Suosittelisitko Haaga-Heliaa kavereillesi?"
 			);
 
+			Question question4 = new Question("Onko kampus ollut viihtyisä?");
+
+			Question question5 = new Question("Missä asioissa Haaga-Helialla olisi parantamisen varaa?");
+
+
 			question1.setQuery(query1);
 			question2.setQuery(query1);
 			question3.setQuery(query1);
+			question4.setQuery(query1);
+			question5.setQuery(query1);
+
 
 			List<Question> questions = new ArrayList<>();
 			questions.add(question1);
 			questions.add(question2);
 			questions.add(question3);
+			questions.add(question4);
+			questions.add(question5);
+
 
 
 			query1.setQuestions(questions);
