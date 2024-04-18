@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.sof5.ohjelmistoprojekti1.domain.Answer;
 import hh.sof5.ohjelmistoprojekti1.domain.AnswerRepository;
-import hh.sof5.ohjelmistoprojekti1.domain.QuestionRepository;
 
 @CrossOrigin
 @Controller
@@ -20,9 +19,6 @@ public class AnswerRestController {
 
     @Autowired
     private AnswerRepository answerRepository;
-
-    @Autowired
-    private QuestionRepository questionRepository;
 
     @GetMapping(value= "/saveanswer")
     public @ResponseBody List<Answer> getAnswers() {
