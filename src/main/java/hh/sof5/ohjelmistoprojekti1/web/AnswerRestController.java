@@ -20,12 +20,12 @@ public class AnswerRestController {
     @Autowired
     private AnswerRepository answerRepository;
 
-    @GetMapping(value= "/saveanswer")
+    @GetMapping(value= "/answers")
     public @ResponseBody List<Answer> getAnswers() {
         return (List<Answer>)answerRepository.findAll();
     }
 
-    @PostMapping(value = "/saveanswer")
+    @PostMapping(value = "/answers")
     public @ResponseBody List<Answer> saveAnswer(@RequestBody List<Answer> answers) {
         return (List<Answer>) answerRepository.saveAll(answers);
     }

@@ -10,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import hh.sof5.ohjelmistoprojekti1.domain.Answer;
+import hh.sof5.ohjelmistoprojekti1.domain.AnswerRepository;
 import hh.sof5.ohjelmistoprojekti1.domain.Query;
 import hh.sof5.ohjelmistoprojekti1.domain.QueryRepository;
 import hh.sof5.ohjelmistoprojekti1.domain.Question;
@@ -25,7 +27,7 @@ public class Ohjelmistoprojekti1Application {
 	}
 
 	@Bean
-	public CommandLineRunner ohjelmistoprojekti1(QueryRepository queryRepository, QuestionRepository questionRepository) {
+	public CommandLineRunner ohjelmistoprojekti1(QueryRepository queryRepository, QuestionRepository questionRepository, AnswerRepository answerRepository) {
 		return (args) -> {
 
 
@@ -39,20 +41,22 @@ public class Ohjelmistoprojekti1Application {
 			log.info("lets save couple test questions");
 
 			Question question1 = new Question(
-				"Minä vuonna olet aloittanut opiskelusi?"
+				"Minä vuonna olet aloittanut opiskelusi?", query1
 			);
 
 			Question question2 = new Question(
-				"Oletko tykännyt opiskella Haaga-Heliassa?"
+				"Oletko tykännyt opiskella Haaga-Heliassa?", query1
 			);
 
 			Question question3 = new Question(
-				"Suosittelisitko Haaga-Heliaa kavereillesi?"
+				"Suosittelisitko Haaga-Heliaa kavereillesi?", query1
 			);
 
-			Question question4 = new Question("Onko kampus ollut viihtyisä?");
+			Question question4 = new Question("Onko kampus ollut viihtyisä?", query1
+			);
 
-			Question question5 = new Question("Missä asioissa Haaga-Helialla olisi parantamisen varaa?");
+			Question question5 = new Question("Missä asioissa Haaga-Helialla olisi parantamisen varaa?", query1
+			);
 
 
 			question1.setQuery(query1);
@@ -69,13 +73,41 @@ public class Ohjelmistoprojekti1Application {
 			questions.add(question4);
 			questions.add(question5);
 
-
-
 			query1.setQuestions(questions);
 
 			queryRepository.save(query1);
 
-		
+			Answer answer1 = new Answer(
+				"Aloitin opintoni vuonna 2023.", question1
+			);
+
+			Answer answer2 = new Answer(
+			"Olen tykännyt opiskella Haaga-Heliassa.", question2	
+			);
+
+			Answer answer3 = new Answer(
+				"Voisin suositella Haaga-Heliaa kavereilleni.", question3
+			);
+
+			Answer answer4 = new Answer(
+				"Pasilan kampus on viihtyisä.", question4
+			);
+
+			Answer answer5 = new Answer(
+				"Aloitin opintoni 2022.", question1
+			);
+
+			Answer answer6 = new Answer(
+				"Haaga-Helia on ok.", question2
+			);
+
+			answerRepository.save(answer1);
+			answerRepository.save(answer2);
+			answerRepository.save(answer3);
+			answerRepository.save(answer4);
+			answerRepository.save(answer5);
+			answerRepository.save(answer6);
+
 
 		};
 	}

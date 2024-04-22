@@ -37,9 +37,9 @@ public class Question {
 
     // Constructors
 
-    
-    public Question(String questionText) {
+    public Question(String questionText, Query query) {
         this.questionText = questionText;
+        this.query = query;
     }
 
     public Question() {
