@@ -61,6 +61,14 @@ public class Question {
 
     // Setters
 
+        public void setAnswers(List<Answer> answers) {
+            this.answers = answers;
+        }
+
+        public List<Answer> getAnswers() {
+            return answers;
+        }
+
         public void setQuestionid(Long questionid) {
             this.questionid = questionid;
         }

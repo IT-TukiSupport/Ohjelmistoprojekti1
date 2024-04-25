@@ -45,21 +45,11 @@ public class AnswerRestController {
     }
 
     @GetMapping(value = "/answers/{id}")
-    public @ResponseBody List<Answer> getAnswersByQueryId(@PathVariable ("id") Long id) {
+    public @ResponseBody List<Question> getAnswersByQueryId(@PathVariable ("id") Long id) {
 
         List<Question> questions = (List<Question>) questionRepository.findByQuery(queryRepository.findByqueryid(id));
 
-        List<Answer> answers = (List<Answer>) answerRepository.findAll();
-        List<Answer> correctAnswers = new ArrayList<>();
-
-        for (Answer answer : answers) { //Pitää päivittää
-            for (Question question : questions) {
-                if (answer.getQuestion().getQuestionid() == question.getQuestionid()) {
-                    correctAnswers.add(answer);
-                }
-            }
-        }
-        return correctAnswers;
+        return questions;
     } 
     
 }
