@@ -38,6 +38,11 @@ public class Ohjelmistoprojekti1Application {
 				"Tällä kyselyllä selvitetään opiskelijoiden mielipiteitä Haaga-Helian ammattikorkeakoulusta."
 			);
 
+			Query query2 = new Query(
+				"Test",
+				"This is a test"
+			);
+
 			log.info("lets save couple test questions");
 
 			Question question1 = new Question(
@@ -65,6 +70,23 @@ public class Ohjelmistoprojekti1Application {
 			question4.setQuery(query1);
 			question5.setQuery(query1);
 
+			Question questionTest = new Question(
+				"Sukunimi", query2
+			);
+
+			Question questionTest2 = new Question(
+				"Etunimi", query2
+			);
+
+			questionTest.setQuery(query2);
+			questionTest2.setQuery(query2);
+
+			List<Question> questionsTest = new ArrayList<>();
+			questionsTest.add(questionTest);
+			questionsTest.add(questionTest2);
+
+			query2.setQuestions(questionsTest);
+			queryRepository.save(query2);
 
 			List<Question> questions = new ArrayList<>();
 			questions.add(question1);
@@ -108,6 +130,16 @@ public class Ohjelmistoprojekti1Application {
 			answerRepository.save(answer5);
 			answerRepository.save(answer6);
 
+			Answer answerTest = new Answer(
+				"Nuppi", questionTest
+			);
+
+			Answer answerTest2 = new Answer(
+				"Tero", questionTest2
+			);
+
+			answerRepository.save(answerTest);
+			answerRepository.save(answerTest2);
 
 		};
 	}
