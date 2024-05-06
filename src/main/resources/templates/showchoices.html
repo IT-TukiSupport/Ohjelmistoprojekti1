@@ -21,7 +21,7 @@
     </table>
 
     <form action="#" th:action="@{/savechoice}" th:object="${newChoice}" method="post">
-        <input type="hidden" name="questionid" th:value="${question.questionid}" />
+        <input type="hidden" name="questionid" th:value="${question.get().questionid}" />
         <p><input type="text" placeholder="Add Choice" th:field="*{choiceText}" /></p>
         <p><input type="submit" value="save" /></p>
     </form>

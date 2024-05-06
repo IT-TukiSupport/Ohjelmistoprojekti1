@@ -114,7 +114,7 @@ public class QuestionController {
         newChoice.setQuestion(questionRepository.findById(questionid).orElse(null));
         questionRepository.save(question);
 
-        return "querylist";
+        return "redirect:/showquestionchoices/" + questionid;
     }
     
     

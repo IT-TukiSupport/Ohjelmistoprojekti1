@@ -92,6 +92,8 @@ public class Ohjelmistoprojekti1Application {
 			queryRepository.save(query2);
 
 			Question questionChoice = new Question(Question.QuestionType.CHOICE, "Missä asut", query2, null);
+			Question questionChoice2 = new Question(Question.QuestionType.CHOICE, "Missä asut", query2, null);
+
 
 			List<Choice> testChoices = new ArrayList<>();
 
@@ -101,8 +103,17 @@ public class Ohjelmistoprojekti1Application {
 
 			questionChoice.setChoices(testChoices);
 
+			Answer mChoice = new Answer(testChoices.get(0).getChoiceText(), questionChoice);
+			Answer mChoice2 = new Answer(testChoices.get(0).getChoiceText(), questionChoice);
+			Answer mChoice3 = new Answer(testChoices.get(2).getChoiceText(), questionChoice);
+			Answer mChoice4 = new Answer(testChoices.get(1).getChoiceText(), questionChoice);
+
 			questionRepository.save(questionChoice);
 			choiceRepository.saveAll(testChoices);
+			answerRepository.save(mChoice);
+			answerRepository.save(mChoice2);
+			answerRepository.save(mChoice3);
+			answerRepository.save(mChoice4);
 
 			List<Question> questions = new ArrayList<>();
 			questions.add(question1);
