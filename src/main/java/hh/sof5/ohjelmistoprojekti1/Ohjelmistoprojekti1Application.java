@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Bean;
 
 import hh.sof5.ohjelmistoprojekti1.domain.Answer;
 import hh.sof5.ohjelmistoprojekti1.domain.AnswerRepository;
+import hh.sof5.ohjelmistoprojekti1.domain.Choice;
+import hh.sof5.ohjelmistoprojekti1.domain.ChoiceRepository;
 import hh.sof5.ohjelmistoprojekti1.domain.Query;
 import hh.sof5.ohjelmistoprojekti1.domain.QueryRepository;
 import hh.sof5.ohjelmistoprojekti1.domain.Question;
@@ -27,7 +29,7 @@ public class Ohjelmistoprojekti1Application {
 	}
 
 	@Bean
-	public CommandLineRunner ohjelmistoprojekti1(QueryRepository queryRepository, QuestionRepository questionRepository, AnswerRepository answerRepository) {
+	public CommandLineRunner ohjelmistoprojekti1(QueryRepository queryRepository, QuestionRepository questionRepository, AnswerRepository answerRepository, ChoiceRepository choiceRepository) {
 		return (args) -> {
 
 
@@ -45,22 +47,22 @@ public class Ohjelmistoprojekti1Application {
 
 			log.info("lets save couple test questions");
 
-			Question question1 = new Question(
-				"Minä vuonna olet aloittanut opiskelusi?", query1
+			Question question1 = new Question(Question.QuestionType.TEXT, 
+				"Minä vuonna olet aloittanut opiskelusi?", query1, null
 			);
 
-			Question question2 = new Question(
-				"Oletko tykännyt opiskella Haaga-Heliassa?", query1
+			Question question2 = new Question(Question.QuestionType.TEXT,
+				"Oletko tykännyt opiskella Haaga-Heliassa?", query1, null
 			);
 
-			Question question3 = new Question(
-				"Suosittelisitko Haaga-Heliaa kavereillesi?", query1
+			Question question3 = new Question(Question.QuestionType.TEXT,
+				"Suosittelisitko Haaga-Heliaa kavereillesi?", query1, null
 			);
 
-			Question question4 = new Question("Onko kampus ollut viihtyisä?", query1
+			Question question4 = new Question(Question.QuestionType.TEXT, "Onko kampus ollut viihtyisä?", query1, null
 			);
 
-			Question question5 = new Question("Missä asioissa Haaga-Helialla olisi parantamisen varaa?", query1
+			Question question5 = new Question(Question.QuestionType.TEXT, "Missä asioissa Haaga-Helialla olisi parantamisen varaa?", query1, null
 			);
 
 
@@ -70,13 +72,14 @@ public class Ohjelmistoprojekti1Application {
 			question4.setQuery(query1);
 			question5.setQuery(query1);
 
-			Question questionTest = new Question(
-				"Sukunimi", query2
+			Question questionTest = new Question(Question.QuestionType.TEXT, 
+				"Sukunimi", query2, null
 			);
 
-			Question questionTest2 = new Question(
-				"Etunimi", query2
+			Question questionTest2 = new Question(Question.QuestionType.TEXT, 
+				"Etunimi", query2, null
 			);
+
 
 			questionTest.setQuery(query2);
 			questionTest2.setQuery(query2);
@@ -87,6 +90,19 @@ public class Ohjelmistoprojekti1Application {
 
 			query2.setQuestions(questionsTest);
 			queryRepository.save(query2);
+
+			Question questionChoice = new Question(Question.QuestionType.CHOICE, "Missä asut", query2, null);
+
+			List<Choice> testChoices = new ArrayList<>();
+
+			testChoices.add(new Choice("Helsinki", questionChoice));
+			testChoices.add(new Choice("Vantaa", questionChoice));
+			testChoices.add(new Choice("Rovaniemi", questionChoice));
+
+			questionChoice.setChoices(testChoices);
+
+			questionRepository.save(questionChoice);
+			choiceRepository.saveAll(testChoices);
 
 			List<Question> questions = new ArrayList<>();
 			questions.add(question1);
@@ -131,11 +147,11 @@ public class Ohjelmistoprojekti1Application {
 			answerRepository.save(answer6);
 
 			Answer answerTest = new Answer(
-				"Nuppi", questionTest
+				"Esimerkki", questionTest
 			);
 
 			Answer answerTest2 = new Answer(
-				"Tero", questionTest2
+				"Erkki", questionTest2
 			);
 
 			answerRepository.save(answerTest);

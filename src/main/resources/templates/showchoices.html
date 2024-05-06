@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlsn:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Choices</title>
+</head>
+<body>
+    <h1>Choices and add new choice</h1>
+
+    <p th:text="${question.get().questionText}"></p>
+
+    <table>
+        <tr>
+            <th>Choices</th>
+        </tr>
+
+        <tr th:each="choice : ${choices}">
+            <td th:text="${choice.choiceText}"></td>
+        </tr>
+    </table>
+
+    <form action="#" th:action="@{/savechoice}" th:object="${newChoice}" method="post">
+        <input type="hidden" name="questionid" th:value="${question.questionid}" />
+        <p><input type="text" placeholder="Add Choice" th:field="*{choiceText}" /></p>
+        <p><input type="submit" value="save" /></p>
+    </form>
+    
+</body>
+</html>

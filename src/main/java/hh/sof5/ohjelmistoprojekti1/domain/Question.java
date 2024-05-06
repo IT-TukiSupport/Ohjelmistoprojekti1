@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,6 +26,11 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long questionid;
+
+    public enum QuestionType { TEXT, CHOICE };
+    @Enumerated(EnumType.ORDINAL)
+    private QuestionType questionType;
+
     private String questionText;
 
     @ManyToOne
@@ -35,11 +42,17 @@ public class Question {
     @JsonIgnoreProperties("question")
     private List<Answer> answers;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "question")
+    @JsonIgnoreProperties("question")
+    private List<Choice> choices; 
+
     // Constructors
 
-    public Question(String questionText, Query query) {
+    public Question(QuestionType questionType ,String questionText, Query query, List<Choice> choices) {
+        this.questionType = questionType;
         this.questionText = questionText;
         this.query = query;
+        this.choices =  choices;
     }
 
     public Question() {
@@ -57,6 +70,10 @@ public class Question {
 
         public Query getQuery() {
             return query;
+        }
+
+        public List<Choice> getChoices() {
+            return choices;
         }
 
     // Setters
@@ -80,13 +97,27 @@ public class Question {
         public void setQuery(Query query) {
             this.query = query;
         }
+
+        public void setChoices(List<Choice> choices) {
+            this.choices = choices;
+        }
+
+        public void addChoice(Choice choice){
+            choices.add(choice);
+        }
         
     // toString
-    
+
     @Override
     public String toString() {
         return "Question [questionid=" + questionid + ", questionText=" + questionText + "]";
     }
 
+    public QuestionType getQuestionType() {
+        return questionType;
+    }
 
+    public void setQuestionType(QuestionType questionType) {
+        this.questionType = questionType;
+    }
 }

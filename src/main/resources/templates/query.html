@@ -29,11 +29,15 @@
         
         <tr th:each="question : ${questions}">
             <td th:text="${question.questionText}"></td>
+            <td th:if="${question.questionType == T(hh.sof5.ohjelmistoprojekti1.domain.Question$QuestionType).CHOICE}">
+                <button><a th:href="@{/showquestionchoices/{questionid}(questionid=${question.questionid})}">Set new choice</a></button>
+            </td>
         </tr>
     </table>
     
     <a href="/queries">Back</a>
     <td><button><a th:href="@{/addquestiontoquery/{queryid}(queryid=${queryid})}">Add Question</a></button></td>
+    <td><button><a th:href="@{/addmultiplechoicetoquery/{queryid}(queryid=${queryid})}">Add multipleChoice Question</a></button></td>
 
 
 
