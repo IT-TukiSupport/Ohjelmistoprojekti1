@@ -92,7 +92,6 @@ public class Ohjelmistoprojekti1Application {
 			queryRepository.save(query2);
 
 			Question questionChoice = new Question(Question.QuestionType.CHOICE, "Missä asut", query2, null);
-			Question questionChoice2 = new Question(Question.QuestionType.CHOICE, "Missä asut", query2, null);
 
 
 			List<Choice> testChoices = new ArrayList<>();
@@ -114,6 +113,29 @@ public class Ohjelmistoprojekti1Application {
 			answerRepository.save(mChoice2);
 			answerRepository.save(mChoice3);
 			answerRepository.save(mChoice4);
+
+			Question questionChoice2 = new Question(Question.QuestionType.CHOICE, "Lempi vuodenaika?", query2, null);
+
+			List<Choice> seasonChoices = new ArrayList<>();
+
+			seasonChoices.add(new Choice("Kevät", questionChoice2));
+			seasonChoices.add(new Choice("Kesä", questionChoice2));
+			seasonChoices.add(new Choice("Syksy", questionChoice2));
+			seasonChoices.add(new Choice("Talvi", questionChoice2));
+
+			questionChoice2.setChoices(seasonChoices);
+
+			Answer nChoice = new Answer(seasonChoices.get(0).getChoiceText(), questionChoice2);
+			Answer nChoice2 = new Answer(seasonChoices.get(0).getChoiceText(), questionChoice2);
+			Answer nChoice3 = new Answer(seasonChoices.get(2).getChoiceText(), questionChoice2);
+			Answer nChoice4 = new Answer(seasonChoices.get(1).getChoiceText(), questionChoice2);
+
+			questionRepository.save(questionChoice2);
+			choiceRepository.saveAll(seasonChoices);
+			answerRepository.save(nChoice);
+			answerRepository.save(nChoice2);
+			answerRepository.save(nChoice3);
+			answerRepository.save(nChoice4);
 
 			List<Question> questions = new ArrayList<>();
 			questions.add(question1);
