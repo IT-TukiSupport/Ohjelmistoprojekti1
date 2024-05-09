@@ -22,5 +22,4 @@ public class QueryRestController {
         public @ResponseBody List<Query> findAllQueries() {
             return (List<Query>) queryRepository.findAll();
         }
-
 }

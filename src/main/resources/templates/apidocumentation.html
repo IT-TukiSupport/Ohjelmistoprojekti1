@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Document</title>
+</head>
+<body>
+    <h1>API Documentation</h1>
+    <p>Method: GET endpoint:/querys</p>
+    <pre>
+        [
+            {
+                "queryid": 1,
+                "name": "Test",
+                "desc": "This is a test",
+                "questions": [
+                    {
+                        "questionid": 1,
+                        "questionType": "TEXT",
+                        "questionText": "Sukunimi",
+                        "answers": [
+                            {
+                                "answerid": 15,
+                                "answerText": "Esimerkki"
+                            }
+                        ],
+                        "choices": []
+                    },
+                    {
+                        "questionid": 2,
+                        "questionType": "TEXT",
+                        "questionText": "Etunimi",
+                        "answers": [
+                            {
+                                "answerid": 16,
+                                "answerText": "Erkki"
+                            }
+                        ],
+                        "choices": []
+                    },
+                    {
+                        "questionid": 3,
+                        "questionType": "CHOICE",
+                        "questionText": "Missä asut",
+                        "answers": [
+                            {
+                                "answerid": 1,
+                                "answerText": "Helsinki"
+                            },
+                            {
+                                "answerid": 2,
+                                "answerText": "Helsinki"
+                            },
+                            {
+                                "answerid": 3,
+                                "answerText": "Rovaniemi"
+                            },
+                            {
+                                "answerid": 4,
+                                "answerText": "Vantaa"
+                            }
+                        ],
+                        "choices": [
+                            {
+                                "choiceText": "Helsinki"
+                            },
+                            {
+                                "choiceText": "Vantaa"
+                            },
+                            {
+                                "choiceText": "Rovaniemi"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    </pre>
+
+    <p>Method: GET endpoint:/answers</p>
+
+    <pre>
+        [
+            {
+                "answerid": 1,
+                "answerText": "Helsinki",
+                "question": {
+                    "questionid": 3,
+                    "questionType": "CHOICE",
+                    "questionText": "Missä asut",
+                    "query": {
+                        "queryid": 1,
+                        "name": "Test",
+                        "desc": "This is a test"
+                    },
+                    "choices": [
+                        {
+                            "choiceText": "Helsinki"
+                        },
+                        {
+                            "choiceText": "Vantaa"
+                        },
+                        {
+                            "choiceText": "Rovaniemi"
+                        }
+                    ]
+                }
+            }
+        ]
+    </pre>
+
+    <p>Method: POST endpoint:/answers</p>
+
+    <pre>
+        [    
+            {
+                "answerText": "Testi",
+                "question": {
+                    "questionid": 1
+                }
+            },
+                {
+                "answerText": "Testi2",
+                "question": {
+                    "questionid": 2
+                }
+            }
+        ]
+    </pre>
+</body>
+</html>

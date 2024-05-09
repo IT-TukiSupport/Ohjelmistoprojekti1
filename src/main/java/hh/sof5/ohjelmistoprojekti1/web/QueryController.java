@@ -13,6 +13,8 @@ import hh.sof5.ohjelmistoprojekti1.domain.QueryRepository;
 import hh.sof5.ohjelmistoprojekti1.domain.Question;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class QueryController {
@@ -60,8 +62,13 @@ public class QueryController {
             model.addAttribute("questions", questions);
             
             return "query";
-
         }
+
+    @GetMapping(value = "/apidocumentation")
+    public String showApiDocumentation() {
+        return "apidocumentation";
+    }
+    
 
 }
     
