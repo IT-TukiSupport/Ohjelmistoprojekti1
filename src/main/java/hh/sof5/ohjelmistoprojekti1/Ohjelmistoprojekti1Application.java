@@ -72,6 +72,71 @@ public class Ohjelmistoprojekti1Application {
 			question4.setQuery(query1);
 			question5.setQuery(query1);
 
+			List<Question> questions1 = new ArrayList<>();
+			questions1.add(question1);
+			questions1.add(question2);
+			questions1.add(question3);
+			questions1.add(question4);
+			questions1.add(question5);
+
+			query1.setQuestions(questions1);
+			queryRepository.save(query1);
+
+			Question questionChoice1 = new Question(Question.QuestionType.CHOICE, "Missä asut", query1, null);
+
+			List<Choice> mtestChoices = new ArrayList<>();
+
+			mtestChoices.add(new Choice("Helsinki", questionChoice1));
+			mtestChoices.add(new Choice("Vantaa", questionChoice1));
+			mtestChoices.add(new Choice("Espoo", questionChoice1));
+			mtestChoices.add(new Choice("Muu", questionChoice1));
+
+			questionChoice1.setChoices(mtestChoices);
+
+			Answer mmChoice = new Answer(mtestChoices.get(0).getChoiceText(), questionChoice1);
+			Answer mmChoice2 = new Answer(mtestChoices.get(1).getChoiceText(), questionChoice1);
+			Answer mmChoice3 = new Answer(mtestChoices.get(2).getChoiceText(), questionChoice1);
+			Answer mmChoice4 = new Answer(mtestChoices.get(3).getChoiceText(), questionChoice1);
+			
+
+			questionRepository.save(questionChoice1);
+			choiceRepository.saveAll(mtestChoices);
+			answerRepository.save(mmChoice);
+			answerRepository.save(mmChoice2);
+			answerRepository.save(mmChoice3);
+			answerRepository.save(mmChoice4);
+
+			Question questionChoice0 = new Question(Question.QuestionType.CHOICE, "Minkä ikäinen olet?", query1, null);
+
+			List<Choice> mtestChoices0 = new ArrayList<>();
+
+			mtestChoices0.add(new Choice("Alle 18", questionChoice0));
+			mtestChoices0.add(new Choice("18-25", questionChoice0));
+			mtestChoices0.add(new Choice("26-35", questionChoice0));
+			mtestChoices0.add(new Choice("Yli 35", questionChoice0));
+
+			questionChoice1.setChoices(mtestChoices);
+
+			Answer mmChoice0 = new Answer(mtestChoices0.get(1).getChoiceText(), questionChoice0);
+			Answer mmChoice20 = new Answer(mtestChoices0.get(2).getChoiceText(), questionChoice0);
+			Answer mmChoice30 = new Answer(mtestChoices0.get(2).getChoiceText(), questionChoice0);
+			Answer mmChoice40 = new Answer(mtestChoices0.get(1).getChoiceText(), questionChoice0);
+			Answer mmChoice50 = new Answer(mtestChoices0.get(1).getChoiceText(), questionChoice0);
+			Answer mmChoice70 = new Answer(mtestChoices0.get(3).getChoiceText(), questionChoice0);
+
+
+
+			questionRepository.save(questionChoice0);
+			choiceRepository.saveAll(mtestChoices0);
+			answerRepository.save(mmChoice0);
+			answerRepository.save(mmChoice20);
+			answerRepository.save(mmChoice30);
+			answerRepository.save(mmChoice40);
+			answerRepository.save(mmChoice50);
+			answerRepository.save(mmChoice70);
+
+
+
 			Question questionTest = new Question(Question.QuestionType.TEXT, 
 				"Sukunimi", query2, null
 			);
@@ -79,7 +144,6 @@ public class Ohjelmistoprojekti1Application {
 			Question questionTest2 = new Question(Question.QuestionType.TEXT, 
 				"Etunimi", query2, null
 			);
-
 
 			questionTest.setQuery(query2);
 			questionTest2.setQuery(query2);
@@ -92,7 +156,6 @@ public class Ohjelmistoprojekti1Application {
 			queryRepository.save(query2);
 
 			Question questionChoice = new Question(Question.QuestionType.CHOICE, "Missä asut", query2, null);
-
 
 			List<Choice> testChoices = new ArrayList<>();
 
@@ -113,6 +176,7 @@ public class Ohjelmistoprojekti1Application {
 			answerRepository.save(mChoice2);
 			answerRepository.save(mChoice3);
 			answerRepository.save(mChoice4);
+
 
 			Question questionChoice2 = new Question(Question.QuestionType.CHOICE, "Lempi vuodenaika?", query2, null);
 
