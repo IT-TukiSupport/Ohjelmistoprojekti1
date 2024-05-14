@@ -22,7 +22,7 @@ public class QueryController {
     @Autowired
     private QueryRepository queryRepository;
 
-    @GetMapping(value = "/queries")
+    @GetMapping(value = "/")
         public String allQueries(Model model){
 
             model.addAttribute("queries", queryRepository.findAll());
