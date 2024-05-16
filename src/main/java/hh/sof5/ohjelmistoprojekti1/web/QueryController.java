@@ -41,7 +41,7 @@ public class QueryController {
         queryRepository.save(query);
 
 
-        return "redirect:/queries";
+        return "redirect:/";
     }
     
     @GetMapping(value = "/editquery/{queryid}")
